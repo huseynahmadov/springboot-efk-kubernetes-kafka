@@ -1,5 +1,6 @@
 package microserviceapplication.controller;
 
+import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import lombok.RequiredArgsConstructor;
 import microserviceapplication.dto.StudentResponse;
 import microserviceapplication.dto.request.CreateStudentRequest;
@@ -29,6 +30,7 @@ public class StudentController {
         studentService.createStudent(request);
     }
 
+    @CircuitBreaker(name = "getAllStudents")
     @GetMapping
     public List<StudentResponse> getAllStudents() {
         return studentService.getAllStudents();

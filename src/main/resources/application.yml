@@ -8,3 +8,18 @@ spring:
   jpa:
     hibernate:
       ddl-auto: validate
+
+resilience4j:
+  circuitbreaker:
+    instances:
+      getAllStudents:
+        # configs for close state
+        sliding-window-type: count_based
+        failure-rate-threshold: 50.0
+        sliding-window-size: 6
+        # configs for open state
+        wait-duration-in-open-state: 10s
+        # configs for hal-open state
+        automatic-transition-from-open-to-half-open-enabled: true
+        permitted-number-of-calls-in-half-open-state: 2
+        max-wait-duration-in-half-open-state: 15000
