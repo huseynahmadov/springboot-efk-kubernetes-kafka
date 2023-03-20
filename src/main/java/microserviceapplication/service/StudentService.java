@@ -5,7 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import microserviceapplication.dto.StudentResponse;
 import microserviceapplication.dto.request.CreateStudentRequest;
 import microserviceapplication.dto.request.UpdateStudentRequest;
-import microserviceapplication.exception.StudentNotFoundException;
+import microserviceapplication.error.StudentNotFoundException;
 import microserviceapplication.mapper.StudentMapper;
 import microserviceapplication.repository.StudentRepository;
 import org.springframework.stereotype.Service;
@@ -34,14 +34,14 @@ public class StudentService {
 
     public StudentResponse getStudent(Long id) {
         var student = studentRepository.findById(id)
-                .orElseThrow(() -> exStudentNotFound(id));
+                .orElseThrow(this::exStudentNotFound);
 
         return studentMapper.mapEntityToResponse(student);
     }
 
     public void updateStudent(Long id, UpdateStudentRequest request) {
         var student = studentRepository.findById(id)
-                .orElseThrow(() -> exStudentNotFound(id));
+                .orElseThrow(this::exStudentNotFound);
 
         studentMapper.mapUpdateRequestToEntity(student, request);
         studentRepository.save(student);
@@ -49,11 +49,11 @@ public class StudentService {
 
     public void deleteStudent(Long id) {
         var student = studentRepository.findById(id)
-                .orElseThrow(() -> exStudentNotFound(id));
+                .orElseThrow(this::exStudentNotFound);
         studentRepository.deleteById(student.getId());
     }
 
-    public StudentNotFoundException exStudentNotFound(Long id) {
-        throw new StudentNotFoundException("Student not found by id " + id);
+    public StudentNotFoundException exStudentNotFound() {
+        throw new StudentNotFoundException();
     }
 }
