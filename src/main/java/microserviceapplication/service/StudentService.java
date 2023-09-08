@@ -2,7 +2,7 @@ package microserviceapplication.service;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import microserviceapplication.dto.StudentResponse;
+import microserviceapplication.dto.response.StudentResponse;
 import microserviceapplication.dto.request.CreateStudentRequest;
 import microserviceapplication.dto.request.UpdateStudentRequest;
 import microserviceapplication.error.StudentNotFoundException;
@@ -65,4 +65,5 @@ public class StudentService {
     public StudentNotFoundException exStudentNotFound() {
         throw new StudentNotFoundException();
     }
+
 }

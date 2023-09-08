@@ -2,7 +2,7 @@ package microserviceapplication.controller;
 
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import lombok.RequiredArgsConstructor;
-import microserviceapplication.dto.StudentResponse;
+import microserviceapplication.dto.response.StudentResponse;
 import microserviceapplication.dto.request.CreateStudentRequest;
 import microserviceapplication.dto.request.UpdateStudentRequest;
 import microserviceapplication.service.StudentService;
