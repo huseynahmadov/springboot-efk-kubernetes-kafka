@@ -1,6 +1,6 @@
 package microserviceapplication.mapper;
 
-import microserviceapplication.dto.StudentResponse;
+import microserviceapplication.dto.response.StudentResponse;
 import microserviceapplication.dto.request.CreateStudentRequest;
 import microserviceapplication.dto.request.UpdateStudentRequest;
 import microserviceapplication.model.Student;
@@ -10,10 +10,11 @@ import org.mapstruct.MappingTarget;
 import org.mapstruct.NullValuePropertyMappingStrategy;
 import org.mapstruct.ReportingPolicy;
 
-@Mapper(componentModel = "spring",unmappedTargetPolicy = ReportingPolicy.IGNORE,
-nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
+@Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE,
+        nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
 public interface StudentMapper {
 
+    //this is test mapping
     @Mapping(target = "id", ignore = true)
     Student mapRequestToStudent(CreateStudentRequest request);
 

@@ -1,7 +1,7 @@
 package microserviceapplication.kafka;
 
 import lombok.extern.slf4j.Slf4j;
-import microserviceapplication.dto.StudentResponse;
+import microserviceapplication.dto.response.StudentResponse;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Component;
 

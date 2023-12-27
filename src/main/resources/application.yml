@@ -25,3 +25,5 @@ resilience4j:
         automatic-transition-from-open-to-half-open-enabled: true
         permitted-number-of-calls-in-half-open-state: 2
         max-wait-duration-in-half-open-state: 15000
+server:
+  port: 8081
